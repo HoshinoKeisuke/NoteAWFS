@@ -9,6 +9,82 @@
 		\item %
 	\end{itemize}
 \end{notation}
+\section{Orthogonal factorisation systems}
+Let $\one{C}$ be a category.
+\begin{definition}
+	A \emph{functorial factorisation} on $\one{C}$
+	is a factorisation of the canonical natural transformation
+	$\dom\arr[Rightarrow]\cod\colon\one{C}^\one{2}\arr\one{C}$.
+	In other words, a functorial factorisation $F=(E,\eta,\varepsilon)$
+	consists of the following data.
+	\begin{itemize}
+		\item %
+			A functor $E\colon\one{C}^\one{2}\arr\one{C}$.
+		\item %
+			Two natural transformations
+			$\dom\arr"\eta"[Rightarrow] E\arr"\varepsilon"[Rightarrow]\cod$
+			whose composite is the canonical natural transformation $\dom\arr[Rightarrow]\cod$.
+		\qedhere %
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	A \emph{(strict) double category} $\dS$ is a category internal to $\Catone$.
+	In particular, $\dS$ consists of the following data.
+	\[
+		\begin{tikzcd}
+			\HcatC\dS
+			\fibtimes{\bs}{\ts}
+			\HcatC\dS
+			\ar[r,shift left=3]
+			\ar[r,"\fatsemi"description]
+			\ar[r,shift right=3]
+				&
+				\HcatC\dS
+				\ar[r,shift left=3,"\bs"]
+				\ar[r,shift right=3,"\ts"']
+					&
+					\Hcat\dS
+					\ar[l,"\id"description]
+		\end{tikzcd}
+	\]
+	A \emph{(strict) double functor} $F\colon \dS\arr \dS'$ is a pair of functors
+	$\Hcat F\colon\Hcat\dS\arr\Hcat\dS'$ and $\HcatC F\colon\HcatC\dS\arr\Hcat\dS'$ making the obvious diagram commute.
+	We write $\SDbl$ for the category of double categories and double functors.
+
+	A \emph{horizontally full subdouble category} of $\dS$ is a double category equipped with a double functor $F$ towards $\dS$
+	such that both $\Hcat F$ and $\HcatC F$ are full subcategory inclusions.
+	A horizontally full subdoble category is called \emph{wide} if $\Hcat F$ is an identitity and
+	$\HcatC F$ is a replete subcategory inclusion.
+	We write $\HFSub(\dS)$ for the poset of horizontally full subdouble categories, and $\WHFSub(\dS)$ for its subposet consisting of wide ones.
+\end{definition}
+\begin{example}
+	(Nerves of) simplices $([2],[1],[0])$ form a category object in $\Catone^\op$,
+	and hence the internal hom functor $(-_2)^{(-_1)}\colon\Catone^\op\times\Catone\arr\Catone$ induces a functor
+	$\Sq\colon\Catone\arr\SDbl$ since $\one{C}^{(-)}\colon\Catone^\op\arr\Catone$ preserves limits for each $\one{C}\in\Catone$.
+
+	For each $\one{C}\in\Catone$, vertical arrows and horizontal arrows
+	in $\Sq(\one{C})$ are morphisms in $\one{C}$, while a (unique) cell exists for a square in $\Sq(\one{C})$
+	if and only if it is a commutative square in $\one{C}$.
+\end{example}
+\begin{proposition}[Subcategory axiom]
+	There is an isomorphism of posets
+	\[
+		\Sub(\one{C})\cong\HFSub(\Sq(\one{C}))
+		\text{,}
+	\]
+	where $\Sub(\one{C})$ is the poset of subcategories of $\one{C}$.
+	Moreover, it restricts to another isomorphism
+	\[
+		\WSub(\one{C})\cong\WHFSub(\Sq(\one{C}))
+		\text{,}
+	\]
+	where $\WSub(\one{C})$ is the poset of wide subcategories.
+\end{proposition}
+\begin{definition}
+	A \emph{wide subcategory} $\one{W}$ of $\one{C}$ is a replete subcategory of $\one{C}$ whose inclusion $\one{W}\arr[hook]\one{C}$
+	is (essentially) surjective.
+\end{definition}
 \bibliographystyle{halpha-abbrv}
 \bibliography{bibliography}
 \end{document}
