@@ -7,27 +7,49 @@
 	We employ the following notations. 
 	\begin{itemize}
 		\item %
+			The arrow category of a category $\one{C}$ is denoted by $\one{C}^\ra$.
+		\item %
+			For each class $\zS$ of morphisms in $\one{C}$,
+			we write $\bar\oS$ for the corresponding full subcategory of $\one{C}^\ra$.
+		\item %
+			Given two morphisms $f,g$, we write $f\perp g$
+			if the lifting problem solves uniquely; i.e.,
+			the canonical function $\one{C}(\cod(f),\dom(g))\arr\one{C}^\ra(f,g)$ is a bijection.
+		\item %
+			We write $\Pmor(\one{C})$ for the (large) poset of classes of morphisms in $\one{C}$.
+			This is isomorphic to the (large) poset of full subcategories of $\one{C}^\ra$.
+		\qedhere %
 	\end{itemize}
 \end{notation}
 \section{Orthogonal factorisation systems}
 Let $\one{C}$ be a category.
+\subsection{Orthogonality for classes of morphisms}
 \begin{definition}
-	A \emph{functorial factorisation} on $\one{C}$
-	is a factorisation of the canonical natural transformation
-	$\dom\arr[Rightarrow]\cod\colon\one{C}^\one{2}\arr\one{C}$.
-	In other words, a functorial factorisation $F=(E,\eta,\varepsilon)$
-	consists of the following data.
-	\begin{itemize}
-		\item %
-			A functor $E\colon\one{C}^\one{2}\arr\one{C}$.
-		\item %
-			Two natural transformations
-			$\dom\arr"\eta"[Rightarrow] E\arr"\varepsilon"[Rightarrow]\cod$
-			whose composite is the canonical natural transformation $\dom\arr[Rightarrow]\cod$.
-		\qedhere %
-	\end{itemize}
+	A class $\zS$ of morphisms is called \emph{reflective} / \emph{coreflective} / \emph{replete} if
+	the full subcategory $\bar\oS$ of $\one{C}^\ra$ is reflective, coreflective, and replete respectively.
 \end{definition}
-
+\begin{definition}
+	Define a monotone function
+	\[
+		-\perp-
+		\colon
+		\Pmor(\one{C})^\op
+		\times
+		\Pmor(\one{C})^\op
+		\arr
+		\ra
+	\]
+	by $\zS\perp\zT:=\forall s\in\zS,\ \forall t\in\zT,\ s\perp t$.
+	One can easily check $\zS\perp-$ and $-\perp \zS$ preserve limits for any $\zS\in\Pmor(\one{C})$,
+	and hence they are representable. We write $\llpo{(-)}\colon\Pmor(\one{C})\adjmap\Pmor(\one{C})^\op\lon\rlpo{(-)}$ for the induced Galois connection.
+\end{definition}
+\begin{definition}
+	An \emph{orthogonal system} $(\zero{E},\zero{M})$ is a pair of classes of morphisms
+	satisfying $\llpo{\zero{M}}=\zero{E}$ and $\rlpo{\zero{E}}=\zero{M}$.
+\end{definition}
+\begin{proposition}
+\end{proposition}
+\subsection{Wide class of morphisms as subdouble category}
 \begin{definition}
 	A \emph{(strict) double category} $\dS$ is a category internal to $\Catone$.
 	In particular, $\dS$ consists of the following data.
@@ -53,13 +75,13 @@ Let $\one{C}$ be a category.
 	We write $\SDbl$ for the category of double categories and double functors.
 
 	A \emph{horizontally full subdouble category} of $\dS$ is a double category equipped with a double functor $F$ towards $\dS$
-	such that both $\Hcat F$ and $\HcatC F$ are full subcategory inclusions.
+	such that both $\Hcat F$ and $\HcatC F$ are full subcategory-inclusions.
 	A horizontally full subdoble category is called \emph{wide} if $\Hcat F$ is an identitity and
-	$\HcatC F$ is a replete subcategory inclusion.
-	We write $\HFSub(\dS)$ for the poset of horizontally full subdouble categories, and $\WHFSub(\dS)$ for its subposet consisting of wide ones.
+	$\HcatC F$ defines a replete subcategory.
+	We write $\hfSub(\dS)$ for the poset of horizontally full subdouble categories, and $\whfSub(\dS)$ for its subposet consisting of wide ones.
 \end{definition}
 \begin{example}
-	(Nerves of) simplices $([2],[1],[0])$ form a category object in $\Catone^\op$,
+	Finite ordinals $([2],[1],[0])$ form a category object in $\Catone^\op$,
 	and hence the internal hom functor $(-_2)^{(-_1)}\colon\Catone^\op\times\Catone\arr\Catone$ induces a functor
 	$\Sq\colon\Catone\arr\SDbl$ since $\one{C}^{(-)}\colon\Catone^\op\arr\Catone$ preserves limits for each $\one{C}\in\Catone$.
 
@@ -67,24 +89,73 @@ Let $\one{C}$ be a category.
 	in $\Sq(\one{C})$ are morphisms in $\one{C}$, while a (unique) cell exists for a square in $\Sq(\one{C})$
 	if and only if it is a commutative square in $\one{C}$.
 \end{example}
+\begin{definition}
+	A \emph{wide subcategory} $\one{W}$ of $\one{C}$ is a replete subcategory of $\one{C}$ whose inclusion $\one{W}\arr[hook]\one{C}$
+	is (essentially) surjective.
+\end{definition}
 \begin{proposition}[Subcategory axiom]
 	There is an isomorphism of posets
 	\[
-		\Sub(\one{C})\cong\HFSub(\Sq(\one{C}))
+		\Sub(\one{C})\cong\hfSub(\Sq(\one{C}))
 		\text{,}
 	\]
 	where $\Sub(\one{C})$ is the poset of subcategories of $\one{C}$.
 	Moreover, it restricts to another isomorphism
 	\[
-		\WSub(\one{C})\cong\WHFSub(\Sq(\one{C}))
+		\wSub(\one{C})\cong\whfSub(\Sq(\one{C}))
 		\text{,}
 	\]
-	where $\WSub(\one{C})$ is the poset of wide subcategories.
+	where $\wSub(\one{C})$ is the poset of wide subcategories.
 \end{proposition}
+\begin{proof}
+	A subcategory of $\one{C}$ and a horizontally full subdouble category of $\Sq(\one{C})$
+	specify the same data:
+	a class of arrows $\zS$ such that $\zS$ is closed under composition, and
+	for each $f\in\zS$, the identities on $\dom(f)$ and $\cod(f)$ are in $\zS$.
+	The subcategory and the subdouble category are wide simultaneously
+	if and only if $\zS$ contains all isomorphisms in $\one{C}$.
+\end{proof}
+\begin{notation}
+	We say a class $\zS$ of morphisms is \emph{wide} if it is closed under composition and contains isomorphisms.
+	We write $\oS$ and $\dS$ for the corresponding wide subcategory and wide horizontally full subdouble category.
+	Note that $\bar\oS$ coincide with $\HcatC\dS$.
+\end{notation}
+
+\subsection{Functorial factorisation}
 \begin{definition}
-	A \emph{wide subcategory} $\one{W}$ of $\one{C}$ is a replete subcategory of $\one{C}$ whose inclusion $\one{W}\arr[hook]\one{C}$
-	is (essentially) surjective.
+	A \emph{functorial factorisation} on $\one{C}$
+	is a factorisation of the canonical natural transformation
+	$\dom\arr[Rightarrow]\cod\colon\one{C}^\ra\arr\one{C}$.
+	In other words, a functorial factorisation $F=(E,\eta,\varepsilon)$
+	consists of the following data.
+	\begin{itemize}
+		\item %
+			A functor $E\colon\one{C}^\ra\arr\one{C}$.
+		\item %
+			Two natural transformations
+			$\dom\arr"\eta"[Rightarrow] E\arr"\varepsilon"[Rightarrow]\cod$
+			whose composite is the canonical natural transformation $\dom\arr[Rightarrow]\cod$.
+		\qedhere %
+	\end{itemize}
 \end{definition}
+
 \bibliographystyle{halpha-abbrv}
 \bibliography{bibliography}
 \end{document}
+
+	Let $\one{S}$ be a subcategory.
+	Define a subdouble category $\dS$ of $\Sq(\one{C})$ as follows.
+	\begin{itemize}
+		\item %
+			$\HcatC(\dS)$
+			is defined by the bo-ff factorisation of the functor
+			$\one{S}^\ra\arr\one{C}^\ra$
+			induced from the inclusion $\one{S}\arr[tail]\one{C}$.
+		\item %
+			The underlying category $\Hcat(\dS)$
+			is obtained by the the bo-ff factorisation of
+			\[
+				\HcatC(\dS)\arr[hook]\one{C}^\ra\arr\one{C}
+			\]
+			where the latter functor is either of the codomain or the domain.
+	\end{itemize}

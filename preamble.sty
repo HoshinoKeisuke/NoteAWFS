@@ -282,7 +282,12 @@ decorations.markings,% to define the key vslash
 }}
 \NewDocumentCommand{\adjunction}{D(){\perp} O{1} m m m m }{
     \begin{tikzcd}[column sep={#2em},ampersand replacement=\&]
-        {#3}\ar[rr,"{#5}",shift left=5pt,bend left=10] \& {#1} \& {#4}\ar[ll,"{#6}",shift left=5pt,bend left=10]
+      {#3}\ar[rr,"{#5}",shift left=5pt] \& {\mbox{\tiny $#1$}} \& {#4}\ar[ll,"{#6}",shift left=5pt]
+    \end{tikzcd}
+}
+\NewDocumentCommand{\adjmap}{D(){\perp} O{0.5} O{} O{} }{
+    \begin{tikzcd}[column sep={#2em},ampersand replacement=\&]
+      \hspace{-2ex}\ar[rr,"{#3}",shift left=3pt] \& {\mbox{\tiny $#1$}} \& \ar[ll,"{#4}",shift left=3.5pt]\hspace{-2ex}
     \end{tikzcd}
 }
 
@@ -349,17 +354,24 @@ decorations.markings,% to define the key vslash
 \newcommand{\tup}[1]{\vec{#1}}
 %----- abbreviations (additional) -----------------------------------------------
 \DeclareMathOperator{\Hcat}{\one{H}}
-\DeclareMathOperator{\HcatC}{\one{H}_1}
+\DeclareMathOperator{\HcatC}{\bar{\one{H}}}
+\newcommand*{\zS}{\zero{S}}
+\newcommand*{\zT}{\zero{T}}
 \newcommand*{\dS}{\dbl{S}}
+\newcommand*{\oS}{\one{S}}
 \newcommand*{\ls}{\mathsf{ls}}
 \newcommand*{\rs}{\mathsf{rs}}
 \newcommand*{\ts}{\mathsf{ts}}
 \newcommand*{\bs}{\mathsf{bs}}
 \newcommand*{\fibtimes}[2]{{\,\,}_{#1}\!\times_{#2}}
 \newcommand*{\SDbl}{\one{SDbl}}
+\newcommand*{\ra}{\one{2}}
+\newcommand*{\llpo}[1]{{{}^\perp#1}}
+\newcommand*{\rlpo}[1]{{#1^{\perp}}}
 \DeclareMathOperator{\Sq}{\dbl{S}\mathrm{q}}
-\DeclareMathOperator{\HFSub}{\one{HFSub}}
-\DeclareMathOperator{\WHFSub}{\one{WHFSub}}
+\DeclareMathOperator{\hfSub}{\one{hfSub}}
+\DeclareMathOperator{\whfSub}{\one{whfSub}}
 \DeclareMathOperator{\Sub}{\one{Sub}}
-\DeclareMathOperator{\WSub}{\one{WSub}}
+\DeclareMathOperator{\wSub}{\one{wSub}}
+\DeclareMathOperator{\Pmor}{\one{P}\hspace{-.1em}\zero{mor}}
 \endinput
