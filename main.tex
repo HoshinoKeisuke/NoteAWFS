@@ -126,17 +126,23 @@ Let $\one{C}$ be a category.
 	A \emph{functorial factorisation} on $\one{C}$
 	is a factorisation of the canonical natural transformation
 	$\dom\arr[Rightarrow]\cod\colon\one{C}^\ra\arr\one{C}$.
-	In other words, a functorial factorisation $F=(E,\eta,\varepsilon)$
+	In other words, a functorial factorisation $F=(\sfE,\bar\sfL,\bar\sfR)$
 	consists of the following data.
 	\begin{itemize}
 		\item %
-			A functor $E\colon\one{C}^\ra\arr\one{C}$.
+			A functor $\sfE\colon\one{C}^\ra\arr\one{C}$.
 		\item %
 			Two natural transformations
-			$\dom\arr"\eta"[Rightarrow] E\arr"\varepsilon"[Rightarrow]\cod$
+			$\dom\arr"\bar\sfL"[Rightarrow] \sfE\arr"\bar\sfR"[Rightarrow]\cod$
 			whose composite is the canonical natural transformation $\dom\arr[Rightarrow]\cod$.
-		\qedhere %
 	\end{itemize}
+	We write $\sfL\colon\one{C}^\ra\arr\one{C}^\ra$ 
+	and $\sfR\colon\one{C}^\ra\arr\one{C}^\ra$ for the functors
+	obtained from
+	$\bar\sfL$ and $\bar\sfR$ respectively
+	by
+	the natural isomorphism
+	$\left[\ra,\left[\one{C}^\ra,\one{C}\right]\right]\cong \left[\one{C}^\ra,\one{C}^\ra\right]$.
 \end{definition}
 
 \bibliographystyle{halpha-abbrv}
